@@ -261,7 +261,7 @@ func orderToParams(order Order) (url.Values, error) {
 	case Multileg, Combo:
 		form.Add("symbol", order.Symbol)
 		form.Add("type", order.Type)
-		if order.Type == LimitOrder || order.Type == StopLimitOrder {
+		if order.Type == LimitOrder || order.Type == StopLimitOrder || order.Type == Credit || order.Type == Debit {
 			form.Add("price", strconv.FormatFloat(order.Price, 'f', 2, 64))
 		}
 		if order.Type == StopOrder || order.Type == StopLimitOrder {
