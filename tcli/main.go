@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/timpalpant/go-tradier"
+	"github.com/kr011/go-tradier"
 )
 
 func showPositions(client *tradier.Client) {
