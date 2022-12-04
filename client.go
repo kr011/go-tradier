@@ -271,7 +271,7 @@ func orderToParams(order Order) (url.Values, error) {
 		for i, leg := range order.Legs {
 			form.Add(fmt.Sprintf("option_symbol[%d]", i), leg.OptionSymbol)
 			form.Add(fmt.Sprintf("side[%d]", i), leg.Side)
-			form.Add(fmt.Sprintf("quantity[%dd]", i), strconv.FormatFloat(leg.Quantity, 'f', 0, 64))
+			form.Add(fmt.Sprintf("quantity[%d]", i), strconv.FormatFloat(leg.Quantity, 'f', 0, 64))
 		}
 	case OneTriggersOther, OneCancelsOther, OneTriggersOneCancelsOther:
 		for i, leg := range order.Legs {
