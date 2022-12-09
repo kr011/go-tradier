@@ -259,7 +259,7 @@ func orderToParams(order Order) (url.Values, error) {
 			form.Add("stop", strconv.FormatFloat(order.StopPrice, 'f', 2, 64))
 		}
 	case Option:
-		form.Add("option_symbol", order.Symbol)
+		form.Add("option_symbol", order.OptionSymbol)
 		form.Add("side", order.Side)
 		form.Add("quantity", strconv.FormatFloat(order.Quantity, 'f', 0, 64))
 		form.Add("type", order.Type)
