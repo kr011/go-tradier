@@ -247,8 +247,19 @@ func orderToParams(order Order) (url.Values, error) {
 	form.Add("duration", order.Duration)
 
 	switch order.Class {
-	case Equity, Option:
+	case Equity:
 		form.Add("symbol", order.Symbol)
+		form.Add("side", order.Side)
+		form.Add("quantity", strconv.FormatFloat(order.Quantity, 'f', 0, 64))
+		form.Add("type", order.Type)
+		if order.Type == LimitOrder || order.Type == StopLimitOrder {
+			form.Add("price", strconv.FormatFloat(order.Price, 'f', 2, 64))
+		}
+		if order.Type == StopOrder || order.Type == StopLimitOrder {
+			form.Add("stop", strconv.FormatFloat(order.StopPrice, 'f', 2, 64))
+		}
+	case Option:
+		form.Add("option_symbol", order.Symbol)
 		form.Add("side", order.Side)
 		form.Add("quantity", strconv.FormatFloat(order.Quantity, 'f', 0, 64))
 		form.Add("type", order.Type)
