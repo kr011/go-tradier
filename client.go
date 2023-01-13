@@ -806,7 +806,7 @@ func (tc *Client) GetQuotes(symbols []string) ([]*Quote, error) {
 	}
 
 	uri := tc.endpoint + "/v1/markets/quotes"
-	data := url.Values{"symbols": {strings.Join(symbols, ",")}, "greeks": {"false"}}
+	data := url.Values{"symbols": {strings.Join(symbols, ",")}, "greeks": {"true"}}
 
 	err := tc.postJSON(uri, data, &result)
 	if err != nil {

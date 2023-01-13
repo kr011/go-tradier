@@ -141,7 +141,7 @@ type Quote struct {
 	ExpirationType   string   `json:"expiration_type"`
 	OptionType       string   `json:"option_type"`
 	RootSymbol       string   `json:"root_symbol"`
-	// Greeks           Greeks
+	Greeks           Greeks
 }
 
 type Greeks struct {
