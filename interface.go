@@ -114,9 +114,9 @@ type Quote struct {
 	Change           float64
 	ChangePercentage float64 `json:"change_percentage"`
 	Volume           int
-	AverageVolume    int
+	AverageVolume    int `json:"average_volume"`
 	Last             float64
-	LastVolume       int
+	LastVolume       int      `json:"last_volume"`
 	TradeDate        DateTime `json:"trade_date"`
 	Open             float64
 	High             float64
@@ -136,7 +136,7 @@ type Quote struct {
 	OpenInterest     float64  `json:"open_interest"`
 	Underlying       string
 	Strike           float64
-	ContractSize     int
+	ContractSize     int      `json:"contract_size"`
 	ExpirationDate   DateTime `json:"expiration_date"`
 	ExpirationType   string   `json:"expiration_type"`
 	OptionType       string   `json:"option_type"`
