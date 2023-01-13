@@ -829,7 +829,7 @@ func (tc *Client) postJSON(url string, data url.Values, result interface{}) erro
 	}
 
 	b, _ := io.ReadAll(resp.Body)
-	fmt.Println(b)
+	fmt.Println(string(b))
 
 	dec := json.NewDecoder(resp.Body)
 	return dec.Decode(result)
