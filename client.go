@@ -798,7 +798,7 @@ func (tc *Client) getJSON(url string, result interface{}) error {
 	return dec.Decode(result)
 }
 
-func (tc *Client) GetQuotes(symbols []string) ([]*Quote, error) {
+func (tc *Client) GetQuotes(symbol string) ([]*Quote, error) {
 	var result struct {
 		Quotes struct {
 			Quote []*Quote
@@ -806,7 +806,7 @@ func (tc *Client) GetQuotes(symbols []string) ([]*Quote, error) {
 	}
 
 	uri := tc.endpoint + "/v1/markets/quotes"
-	data := url.Values{"symbols": {strings.Join(symbols, ",")}, "greeks": {"true"}}
+	data := url.Values{"symbols": {symbol}, "greeks": {"true"}}
 
 	err := tc.postJSON(uri, data, &result)
 	if err != nil {
