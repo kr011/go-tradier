@@ -816,6 +816,24 @@ func (tc *Client) GetQuotes(symbols []string) ([]*Quote, error) {
 	return result.Quotes.Quote, nil
 }
 
+func (tc *Client) GetQuote(symbols []string) (*Quote, error) {
+	var result struct {
+		Quotes struct {
+			Quote *Quote
+		}
+	}
+
+	uri := tc.endpoint + "/v1/markets/quotes"
+	data := url.Values{"symbols": {strings.Join(symbols, ",")}, "greeks": {"true"}}
+
+	err := tc.postJSON(uri, data, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	return result.Quotes.Quote, nil
+}
+
 func (tc *Client) postJSON(url string, data url.Values, result interface{}) error {
 	resp, err := tc.do("POST", url, data, tc.retryLimit)
 	if err != nil {
